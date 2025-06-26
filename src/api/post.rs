@@ -1,4 +1,4 @@
-use leptos::{logging::log, prelude::*, server_fn::codec::GetUrl};
+use leptos::{prelude::*, server_fn::codec::GetUrl};
 
 use crate::models::post::Post;
 
