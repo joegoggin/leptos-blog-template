@@ -31,7 +31,7 @@ impl LocalStorageUtil {
 
     pub fn set_item(&self, key: &str, value: &str) {
         if let Some(local_storage) = &self.local_storage {
-            local_storage.set_item(key, value);
+            let _ = local_storage.set_item(key, value);
         }
     }
 }

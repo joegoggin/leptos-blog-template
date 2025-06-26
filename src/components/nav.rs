@@ -1,9 +1,6 @@
 use leptos::{ev::MouseEvent, prelude::*};
 
-use crate::{
-    components::icon::{moon::MoonIcon, sun::SunIcon},
-    utils::local_storage::LocalStorageUtil,
-};
+use crate::components::icon::{moon::MoonIcon, sun::SunIcon};
 
 use leptos::web_sys::window;
 
@@ -48,6 +45,8 @@ pub fn Nav() -> impl IntoView {
 
         #[cfg(feature = "hydrate")]
         {
+            use crate::utils::local_storage::LocalStorageUtil;
+
             let local_storage_util = LocalStorageUtil::new();
 
             local_storage_util.set_item("theme", theme);
