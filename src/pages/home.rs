@@ -1,6 +1,6 @@
 use leptos::prelude::*;
 
-use crate::api::post::get_posts;
+use crate::{api::post::get_posts, components::loading::suspense::LoadingSuspense};
 
 #[component]
 pub fn HomePage() -> impl IntoView {
@@ -9,9 +9,7 @@ pub fn HomePage() -> impl IntoView {
     view! {
         <div class="home">
             <h1>"Posts"</h1>
-            <Suspense fallback=move || {
-                view! { <p>"Loading..."</p> }
-            }>
+            <LoadingSuspense>
                 {move || {
                     posts_resource
                         .get()
@@ -28,7 +26,7 @@ pub fn HomePage() -> impl IntoView {
                             Err(e) => view! { <p>{format!("Error: {}", e)}</p> }.into_any(),
                         })
                 }}
-            </Suspense>
+            </LoadingSuspense>
         </div>
     }
 }
