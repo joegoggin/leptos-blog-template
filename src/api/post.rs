@@ -1,3 +1,5 @@
+use std::{thread, time::Duration};
+
 use leptos::{prelude::*, server_fn::codec::GetUrl};
 
 use crate::models::post::Post;
@@ -19,6 +21,8 @@ pub async fn get_posts() -> Result<Vec<Post>, ServerFnError> {
     )
     .fetch_all(&ctx.db)
     .await?;
+
+    thread::sleep(Duration::from_secs(5));
 
     Ok(posts)
 }
