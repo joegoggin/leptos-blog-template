@@ -1,4 +1,4 @@
-use leptos::{children, prelude::*};
+use leptos::prelude::*;
 
 #[component]
 pub fn ErrorMessage(error: String) -> impl IntoView {

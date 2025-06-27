@@ -2,7 +2,9 @@ use leptos::prelude::*;
 
 use crate::{
     api::post::get_posts,
-    components::{loading::suspense::LoadingSuspense, message::error::ErrorMessage},
+    components::{
+        loading::suspense::LoadingSuspense, message::error::ErrorMessage, post_preview::PostPreview,
+    },
 };
 
 #[component]
@@ -21,7 +23,7 @@ pub fn HomePage() -> impl IntoView {
                                 posts
                                     .iter()
                                     .map(|post| {
-                                        view! { <p>{post.title.clone()}</p> }
+                                        view! { <PostPreview post=post.clone() /> }
                                     })
                                     .collect::<Vec<_>>()
                                     .into_any()
