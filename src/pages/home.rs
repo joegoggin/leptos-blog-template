@@ -1,6 +1,9 @@
 use leptos::prelude::*;
 
-use crate::{api::post::get_posts, components::loading::suspense::LoadingSuspense};
+use crate::{
+    api::post::get_posts,
+    components::{loading::suspense::LoadingSuspense, message::error::ErrorMessage},
+};
 
 #[component]
 pub fn HomePage() -> impl IntoView {
@@ -23,7 +26,9 @@ pub fn HomePage() -> impl IntoView {
                                     .collect::<Vec<_>>()
                                     .into_any()
                             }
-                            Err(e) => view! { <p>{format!("Error: {}", e)}</p> }.into_any(),
+                            Err(error) => {
+                                view! { <ErrorMessage error=error.to_string() /> }.into_any()
+                            }
                         })
                 }}
             </LoadingSuspense>
