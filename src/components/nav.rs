@@ -5,7 +5,7 @@ use crate::components::icon::{moon::MoonIcon, sun::SunIcon};
 
 #[component]
 pub fn Nav() -> impl IntoView {
-    let (is_dark_theme, set_is_dark_theme) = signal(false);
+    let (is_dark_theme, set_is_dark_theme) = signal(true);
 
     fn set_theme(theme: &str) {
         if let Some(body) = window().and_then(|w| w.document()).and_then(|d| d.body()) {

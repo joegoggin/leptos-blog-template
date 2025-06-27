@@ -20,7 +20,7 @@ pub fn layout(options: LeptosOptions) -> impl IntoView {
                 <HydrationScripts options />
                 <MetaTags />
             </head>
-            <body>
+            <body data-theme="dark">
                 <App />
             </body>
         </html>
