@@ -44,3 +44,6 @@ async fn main() {
         .await
         .unwrap();
 }
+
+#[cfg(feature = "hydrate")]
+fn main() {}
