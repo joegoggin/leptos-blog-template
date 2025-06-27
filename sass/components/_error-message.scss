@@ -1,0 +1,6 @@
+@use "../core/colors" as colors;
+
+.error-message {
+    margin-top: 20px;
+    color: colors.$imperial-red-100;
+}
