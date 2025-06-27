@@ -1,8 +1,7 @@
+use leptos::web_sys::window;
 use leptos::{ev::MouseEvent, prelude::*};
 
 use crate::components::icon::{moon::MoonIcon, sun::SunIcon};
-
-use leptos::web_sys::window;
 
 #[component]
 pub fn Nav() -> impl IntoView {
@@ -54,7 +53,7 @@ pub fn Nav() -> impl IntoView {
     });
 
     view! {
-        <div class="nav">
+        <nav class="nav">
             <h4>"Leptos Blog Template"</h4>
             {move || {
                 if is_dark_theme.get() {
@@ -69,6 +68,6 @@ pub fn Nav() -> impl IntoView {
                         .into_any()
                 }
             }}
-        </div>
+        </nav>
     }
 }
