@@ -46,9 +46,7 @@ pub fn Nav() -> impl IntoView {
         {
             use crate::utils::local_storage::LocalStorageUtil;
 
-            let local_storage_util = LocalStorageUtil::new();
-
-            local_storage_util.set_item("theme", theme);
+            LocalStorageUtil::new().set_item("theme", theme);
         }
     });
 
