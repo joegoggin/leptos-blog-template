@@ -24,8 +24,7 @@ pub fn Nav() -> impl IntoView {
         {
             use crate::utils::local_storage::LocalStorageUtil;
 
-            let local_storage_util = LocalStorageUtil::new();
-            let theme = local_storage_util.get_item("theme");
+            let theme = LocalStorageUtil::new().get_item("theme");
 
             if let Some(theme) = theme {
                 if theme == "dark" {
