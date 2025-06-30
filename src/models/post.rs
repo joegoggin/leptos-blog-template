@@ -18,29 +18,42 @@ impl Post {
     }
 
     pub fn get_paragraphs(&self) -> Vec<String> {
-        let chars = self.content.chars().collect::<Vec<char>>();
         let mut paragraphs: Vec<String> = vec![];
         let mut start_index: usize = 0;
+        let mut content = self.content.clone();
 
-        for (index, char) in self.content.chars().enumerate() {
-            if index < chars.len() + 2 {
-                if char == '\\' && chars[index + 1] == 'n' {
-                    if index < chars.len() + 3 {
-                        if chars[index + 2] != '\\' && chars[index + 3] != 'n' {
-                            paragraphs.push(self.content[start_index..index].to_string());
-                        }
+        loop {
+            if content.len() < 2 {
+                break;
+            };
+
+            if &content[content.len() - 2..content.len()] == "\\n" {
+                content = content[0..content.len() - 2].to_string();
+            } else {
+                break;
+            }
+        }
+
+        let chars = content.chars().collect::<Vec<char>>();
+
+        for i in 0..chars.len() {
+            if i < chars.len() - 1 {
+                if chars[i] == '\\' && chars[i + 1] == 'n' {
+                    if &content[start_index..i] != "" {
+                        paragraphs.push(content[start_index..i].to_string());
                     }
-                    start_index = index + 2;
+
+                    start_index = i + 2;
                 }
             }
 
-            if index == chars.len() - 1 {
-                paragraphs.push(self.content[start_index..index].to_string());
+            if i == chars.len() - 1 {
+                paragraphs.push(content[start_index..chars.len()].to_string());
             }
         }
 
         if paragraphs.len() == 0 {
-            paragraphs.push(self.content.clone());
+            paragraphs.push(content);
         }
 
         paragraphs
